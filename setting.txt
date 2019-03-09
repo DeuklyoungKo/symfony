@@ -1,10 +1,54 @@
- composer create-project symfony/website-skeleton my-project
+composer install
+(composer create-project symfony/website-skeleton my-project)
 
-composer require sec-checker --dev
-composer require knplabs/knp-markdown-bundle
-composer require knplabs/knp-time-bundle
-composer require orm-fixtures --dev
-composer require fzaninotto/faker --dev
+DATABASE_URL=mysql://root:1111@127.0.0.1:3306/dockerdb
+
+php bin/console doctrine:database:drop --force
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
+
+composer require symfony/apache-pack
+
 composer require stof/doctrine-extensions-bundle
-composer require twig/extensions
+(https://symfony.com/doc/master/bundles/StofDoctrineExtensionsBundle/configuration.html#add-the-extensions-to-your-mapping)
+
+(https://symfony.com/doc/current/form/bootstrap4.html)
+
+composer require knplabs/knp-menu-bundle
+(https://symfony.com/doc/master/bundles/KnpMenuBundle/index.html)
+
+composer require knplabs/knp-time-bundle
+(https://github.com/KnpLabs/KnpTimeBundle)
+
 composer require knplabs/knp-paginator-bundle
+(https://symfonycasts.com/screencast/doctrine-relations/pagination)
+
+
+composer require beberlei/doctrineextensions
+(https://github.com/beberlei/DoctrineExtensions)
+
+
+to make flash message to be used in the ajax
+http://blog.michaelperrin.fr/2013/03/07/notification-flash-messages-for-json-responses-with-symfony2/
+---
+
+
+php bin/console make:migration
+
+composer clear-cache
+composer clearcache
+
+
+php bin/console --version
+
+Symfony\Component\HttpKernel\Kernel for where const VERSION
+
+
+====
+drop table
+php bin/console doctrine:schema:drop --full-database --force
+
+
+composer require fabpot/goutte
+(https://github.com/FriendsOfPHP/Goutte)
